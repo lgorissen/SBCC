@@ -1,19 +1,19 @@
-# Operations REST services 
+# Store REST services 
 
-A description of the Operations REST services.
+A description of the Store REST services.
 
 ## ping
 Returns a String that will inform:
-- is the Operations REST service operational
+- is the Store REST service operational
 - are all back-end services operational
 
 
 **Method:** GET
 
-**Path:** /operations/ping
+**Path:** /store/ping
 
 **Send Request**
-> `http://host:port/operations/ping`
+> `http://host:port/store/ping`
 
 **Request body**
 

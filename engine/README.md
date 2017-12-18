@@ -1,19 +1,19 @@
-# Operations REST services 
+# Engine REST services 
 
-A description of the Operations REST services.
+A description of the Engine REST services.
 
 ## ping
 Returns a String that will inform:
-- is the Operations REST service operational
+- is the Engine REST service operational
 - are all back-end services operational
 
 
 **Method:** GET
 
-**Path:** /operations/ping
+**Path:** /engine/ping
 
 **Send Request**
-> `http://host:port/operations/ping`
+> `http://host:port/engine/ping`
 
 **Request body**
 

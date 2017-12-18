@@ -2,7 +2,7 @@
     "runtime": {
         "majorVersion": "8"
     },
-    "command": "java -jar operations-rest-service-1.0.0.jar",
+    "command": "java -jar operations-rest-service-0.1.0.jar",
     "release": {
         "version": "1.0",
         "build": "1",

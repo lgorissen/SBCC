@@ -1,0 +1,12 @@
+{
+    "runtime": {
+        "majorVersion": "8"
+    },
+    "command": "java -jar store-rest-service-0.1.0.jar",
+    "release": {
+        "version": "1.0",
+        "build": "1",
+        "commit": "123456"
+    },
+    "notes": "Store REST services - stores case instance states and case definitions for SpringBoot Case Controller - SBCC"
+}
