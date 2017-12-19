@@ -30,13 +30,15 @@ public class OperationsController {
 
         LOGGER.info("/ping received");
 
-        PingResponse pingResponse = new PingResponse();
-
-        pingResponse.setEndPoint("http://localhost:8080/operations/ping");
-
         // set start time
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
+
+        PingResponse pingResponse = new PingResponse();
         pingResponse.setStartTime(timeStamp);
+
+        // set endPoint
+        pingResponse.setEndPoint("http://localhost:8080/operations/ping");
+
 
         // ping engine
 
@@ -46,7 +48,7 @@ public class OperationsController {
         PingResponse enginePing = new PingResponse("http://localhost:8081/engine/ping",
                 enginePingResponse.getStartTime(),
                 enginePingResponse.getEndTime(),
-                null);
+                enginePingResponse.getReferencePings());
         pingResponse.getReferencePings().add(enginePing);
 
         // ping store
@@ -56,7 +58,7 @@ public class OperationsController {
         PingResponse storePing = new PingResponse("http://localhost:8082/store/ping",
                 storePingResponse.getStartTime(),
                 storePingResponse.getEndTime(),
-                null);
+                storePingResponse.getReferencePings());
         pingResponse.getReferencePings().add(storePing);
 
         // set end time

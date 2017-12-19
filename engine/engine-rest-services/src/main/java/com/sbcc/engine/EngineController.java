@@ -32,18 +32,16 @@ public class EngineController {
 
         String startTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
 
+        String endPoint = "http://localhost:8081/engine/ping";
+
         // insert ping logic here
 
         String endTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
 
         // construct answer
-        PingResponse response = new PingResponse(startTime,endTime);
-        
-        if (response != null) {
-            return new ResponseEntity<PingResponse>(response, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        }
+        PingResponse response = new PingResponse(endPoint, startTime, endTime, null);
+
+        return new ResponseEntity<PingResponse>(response, HttpStatus.OK);
     }
 
 }

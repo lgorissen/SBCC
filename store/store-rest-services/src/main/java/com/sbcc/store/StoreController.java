@@ -32,12 +32,14 @@ public class StoreController {
 
         String startTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
 
+        String endPoint = "http://localhost:8082/store/ping";
+
         // insert ping logic here
 
         String endTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
 
         // construct answer
-        PingResponse response = new PingResponse(startTime,endTime);
+        PingResponse response = new PingResponse(endPoint, startTime,endTime, null);
         
         if (response != null) {
             return new ResponseEntity<PingResponse>(response, HttpStatus.OK);

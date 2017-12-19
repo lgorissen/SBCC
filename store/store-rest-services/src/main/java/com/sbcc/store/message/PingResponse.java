@@ -1,26 +1,33 @@
 package com.sbcc.store.message;
 
-
+import java.util.ArrayList;
 
 public class PingResponse {
 
+  private String endPoint;
   private String startTime;
   private String endTime;
-  
-  public PingResponse(){
-      super();
-      startTime = "NotSet";
-      endTime = "NotSet";
+  private ArrayList<PingResponse> referencePings;
+
+  public PingResponse() {
+    super();
+    endPoint = "NotSet";
+    startTime = "NotSet";
+    endTime = "NotSet";
+    referencePings = new ArrayList<>();
   }
-   
-  public PingResponse(String startTime, 
-                      String endTime){
-      this.startTime = startTime;
-      this.endTime = endTime;
+
+
+  public String getEndPoint() {
+    return endPoint;
   }
-  
+
+  public void setEndPoint(String endPoint) {
+    this.endPoint = endPoint;
+  }
+
   public String getStartTime() {
-    return this.startTime;
+    return startTime;
   }
 
   public void setStartTime(String startTime) {
@@ -28,18 +35,39 @@ public class PingResponse {
   }
 
   public String getEndTime() {
-    return this.endTime;
+    return endTime;
   }
 
   public void setEndTime(String endTime) {
     this.endTime = endTime;
   }
 
-  
+  public ArrayList<PingResponse> getReferencePings() {
+    return referencePings;
+  }
+
+  public void setReferencePings(ArrayList<PingResponse> referencePings) {
+    this.referencePings = referencePings;
+  }
+
+  public PingResponse(String endPoint,
+                      String startTime,
+                      String endTime,
+                      ArrayList referencePings) {
+    this.endPoint = endPoint;
+
+    this.startTime = startTime;
+    this.referencePings = referencePings;
+    this.endTime = endTime;
+
+  }
+
+
   @Override
-  public String toString(){
+  public String toString() {
     return "Operations Ping Response start: " + startTime
-         + " Operations Ping Response end: " + endTime;
-  }  
-  
+            + " Operations Ping Response end: " + endTime;
+  }
+
+
 }
