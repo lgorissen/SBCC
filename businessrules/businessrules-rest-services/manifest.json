@@ -1,0 +1,12 @@
+{
+    "runtime": {
+        "majorVersion": "8"
+    },
+    "command": "java -jar businessrules-rest-service-0.1.0.jar",
+    "release": {
+        "version": "1.0",
+        "build": "1",
+        "commit": "123456"
+    },
+    "notes": "Business Rules REST services - has business logic for event processing for SpringBoot Case Controller - SBCC"
+}
