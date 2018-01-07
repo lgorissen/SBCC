@@ -1,0 +1,29 @@
+package com.sbcc.rules;
+
+import com.sbcc.businessrules.model.CaseEvent;
+import com.sbcc.businessrules.model.CaseAction;
+import com.sbcc.businessrules.model.MilestoneAction;
+import com.sbcc.businessrules.model.ActivityAction;
+
+global com.sbcc.businessrules.model.CaseAction caseAction;
+dialect "mvel"
+
+rule "Activity Action"
+	when
+		caseEvent:CaseEvent(eventType=="ACTIVITY_EVENT")
+	then
+	    ActivityAction activityAction = new ActivityAction();
+        activityAction.setActivityName(caseEvent.getActivityEvent().getActivityName());
+        activityAction.setAction(caseEvent.getActivityEvent().getActivityEvent());
+		caseAction.setActivityAction(activityAction);
+	end
+
+rule "Milestone Action"
+	when
+		caseEvent:CaseEvent(eventType=="MILESTONE_EVENT")
+	then
+        MilestoneAction milestoneAction = new MilestoneAction();
+        milestoneAction.setMilestoneName(caseEvent.getMilestoneEvent().getMilestone());
+        milestoneAction.setAction(caseEvent.getMilestoneEvent().getMilestoneEvent());
+        caseAction.setMilestoneAction(milestoneAction);
+	end
