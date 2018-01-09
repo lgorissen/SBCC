@@ -14,7 +14,7 @@ rule "Activity Action"
 	then
 	    ActivityAction activityAction = new ActivityAction();
         activityAction.setActivityName(caseEvent.getActivityEvent().getActivityName());
-        activityAction.setAction(caseEvent.getActivityEvent().getActivityEvent());
+        activityAction.setAction(caseEvent.getActivityEvent().getActivityEvent().toString());
 		caseAction.setActivityAction(activityAction);
 	end
 

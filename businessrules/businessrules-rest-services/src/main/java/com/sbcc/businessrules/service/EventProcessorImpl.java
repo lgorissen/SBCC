@@ -16,13 +16,13 @@ public class EventProcessorImpl implements EventProcessor {
     private static final Logger logger = LoggerFactory.getLogger(EventProcessorImpl.class);
 
     @Autowired
-    private DecisionService droolsService;
+    private DecisionService decisionService;
 
     @Override
     public List<CaseAction> processEvent(Case caseInstance, CaseEvent caseEvent, List<CaseAction> caseActions) {
 
         logger.debug("CaseEvent: " + caseEvent.toString());
 
-        return droolsService.processEvent(caseInstance, caseEvent, caseActions);
+        return decisionService.processEvent(caseInstance, caseEvent, caseActions);
     }
 }

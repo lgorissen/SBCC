@@ -3,6 +3,7 @@
 The commands below are intended to be run on a Linux machine.
 
 **Build**
+
 Requires Maven 3 and JDK8
 > mvn clean package
 
@@ -15,13 +16,16 @@ Artifacts 2 and 3 are similar: either one can be used when deploying to the Orac
 
 
 **Run the SpringBoot jar file:**
+
 Run the SpringBoot jar file:
 > java -jar target/businessrules-rest-service-1.0.0.jar
 
 **Running on Oracle Application Container Cloud Service (ACCS)**
+
 ToDo
 
 **Build a Container**
+
 Requires at least the Docker community edition to be installed.
 >mvn install dockerfile:build
 
@@ -34,11 +38,42 @@ That lists the containers available and the businessrules container should show 
 
 
 **Run a Container**
+
 Running the Docker container on a local machine:
-> docker run -d -p 8080:8080 sbcc/businessrules-rest-service
+> docker run -d -p 8083:8083 sbcc/businessrules-rest-service
 
 Runs the container 'detached' and with port mapping.
 
+**Testing the Service**
 
+Currently the service just convert the supplied Event into an Action with the same name and value.
+The current JSON request can be used for testing against endpoint **http://localhost:8083/businessrules/rpc/1.0**:
+
+`{
+   "id":0,
+   "method":"processEvent",
+   "params":{
+      "case":{
+         "caseHeader":{
+            "name":"HandelsvorderingCasus",
+            "state":"ACTIVE",
+            "version":"2.0",
+            "rulesVersion":"DEFAULT"
+         },
+         "milestones":[
+         ]
+      },
+      "caseEvent":{
+         "eventType":"ACTIVITY_EVENT",
+         "activityEvent":{
+            "activityName":"actIndienenProcesinleiding",
+            "activityEvent":"COMPLETED"
+         }
+      },
+      "caseActions":[
+      ]
+   }
+}
+`
 
 

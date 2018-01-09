@@ -1,16 +1,18 @@
 package com.sbcc.businessrules.model;
 
+import com.sbcc.businessrules.model.enums.ActivityEventEnum;
+
 import javax.validation.constraints.NotNull;
 
 public class ActivityEvent {
 
     private String activityName;
-    private String activityEvent;
+    private ActivityEventEnum activityEvent;
 
     public ActivityEvent() {
     }
 
-    public ActivityEvent(String activityName, String activityEvent) {
+    public ActivityEvent(String activityName, ActivityEventEnum activityEvent) {
         this.activityName = activityName;
         this.activityEvent = activityEvent;
     }
@@ -24,12 +26,11 @@ public class ActivityEvent {
         this.activityName = activityName;
     }
 
-    @NotNull
-    public String getActivityEvent() {
+    public ActivityEventEnum getActivityEvent() {
         return activityEvent;
     }
 
-    public void setActivityEvent(String activityEvent) {
+    public void setActivityEvent(ActivityEventEnum activityEvent) {
         this.activityEvent = activityEvent;
     }
 
