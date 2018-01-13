@@ -1,0 +1,282 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This API exposes the SBCC functionality",
+    "version" : "0.1.0",
+    "title" : "SBCC external API",
+    "contact" : {
+      "email" : "luc.gorissen@amis.nl"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/SBCC/operations/0.1.0",
+  "tags" : [ {
+    "name" : "management",
+    "description" : "Management-only operations"
+  }, {
+    "name" : "application",
+    "description" : "Operations available to other applications"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/ping" : {
+      "get" : {
+        "tags" : [ "management" ],
+        "summary" : "ping for availability of SBCC components",
+        "description" : "ping for availability of SBCC components\n",
+        "operationId" : "ping",
+        "consumes" : [ ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "health of SBCC components",
+            "schema" : {
+              "$ref" : "#/definitions/PingResponse"
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
+    "/caseactivity" : {
+      "put" : {
+        "tags" : [ "application" ],
+        "summary" : "submit Case Activity event",
+        "description" : "Submits a Case Activity event that will be processed by the SBCC\n",
+        "operationId" : "caseActivityEvent",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "caseActivityEventRequest",
+          "description" : "case activity event that has to be processed by SBCC",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/CaseActivityEventRequest"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "event will be processed",
+            "schema" : {
+              "$ref" : "#/definitions/CaseActivityEventResponse"
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "PingResponse" : {
+      "type" : "object",
+      "required" : [ "endPoint", "endTime", "startTime" ],
+      "properties" : {
+        "startTime" : {
+          "type" : "string",
+          "example" : "ToDo"
+        },
+        "endTime" : {
+          "type" : "string",
+          "example" : "ToDo"
+        },
+        "endPoint" : {
+          "type" : "string",
+          "example" : "http://localhost:8081/SBCC/operations/0.1.0/ping"
+        },
+        "referencePings" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/PingResponse"
+          }
+        }
+      },
+      "example" : {
+        "endPoint" : "http://localhost:8081/SBCC/operations/0.1.0/ping",
+        "startTime" : "ToDo",
+        "endTime" : "ToDo",
+        "referencePings" : [ null, null ]
+      }
+    },
+    "CaseActivityEventRequest" : {
+      "type" : "object",
+      "required" : [ "caseIdentifier", "caseMessageIn", "userContext" ],
+      "properties" : {
+        "caseIdentifier" : {
+          "$ref" : "#/definitions/CaseIdentifier"
+        },
+        "userContext" : {
+          "$ref" : "#/definitions/UserContext"
+        },
+        "caseMessageIn" : {
+          "$ref" : "#/definitions/CaseMessageIn"
+        }
+      },
+      "example" : {
+        "caseMessageIn" : {
+          "activityGuid" : "todo",
+          "dataList" : "",
+          "activityName" : "todo",
+          "message" : "COMPLETED"
+        },
+        "caseIdentifier" : {
+          "caseId" : "NL17.1234",
+          "identificationKey" : "987654321"
+        },
+        "userContext" : {
+          "credential" : {
+            "password" : "todo",
+            "onBehalfOfUser" : "todo",
+            "user" : "todo"
+          },
+          "timeZone" : "todo",
+          "locale" : "todo",
+          "token" : "todo"
+        }
+      }
+    },
+    "CaseActivityEventResponse" : {
+      "type" : "object",
+      "required" : [ "caseIdentifier" ],
+      "properties" : {
+        "caseIdentifier" : {
+          "$ref" : "#/definitions/CaseIdentifier"
+        }
+      },
+      "example" : {
+        "caseIdentifier" : {
+          "caseId" : "NL17.1234",
+          "identificationKey" : "987654321"
+        }
+      }
+    },
+    "CaseIdentifier" : {
+      "type" : "object",
+      "required" : [ "caseId", "identificationKey" ],
+      "properties" : {
+        "caseId" : {
+          "type" : "string",
+          "example" : "NL17.1234"
+        },
+        "identificationKey" : {
+          "type" : "string",
+          "example" : "987654321"
+        }
+      },
+      "example" : {
+        "caseId" : "NL17.1234",
+        "identificationKey" : "987654321"
+      }
+    },
+    "UserContext" : {
+      "type" : "object",
+      "required" : [ "credential" ],
+      "properties" : {
+        "credential" : {
+          "$ref" : "#/definitions/Credential"
+        },
+        "token" : {
+          "type" : "string",
+          "example" : "todo"
+        },
+        "locale" : {
+          "type" : "string",
+          "example" : "todo"
+        },
+        "timeZone" : {
+          "type" : "string",
+          "example" : "todo"
+        }
+      },
+      "example" : {
+        "credential" : {
+          "password" : "todo",
+          "onBehalfOfUser" : "todo",
+          "user" : "todo"
+        },
+        "timeZone" : "todo",
+        "locale" : "todo",
+        "token" : "todo"
+      }
+    },
+    "Credential" : {
+      "type" : "object",
+      "required" : [ "user" ],
+      "properties" : {
+        "user" : {
+          "type" : "string",
+          "example" : "todo"
+        },
+        "password" : {
+          "type" : "string",
+          "example" : "todo"
+        },
+        "onBehalfOfUser" : {
+          "type" : "string",
+          "example" : "todo"
+        }
+      },
+      "example" : {
+        "password" : "todo",
+        "onBehalfOfUser" : "todo",
+        "user" : "todo"
+      }
+    },
+    "CaseMessageIn" : {
+      "type" : "object",
+      "required" : [ "activityName" ],
+      "properties" : {
+        "activityGuid" : {
+          "type" : "string",
+          "example" : "todo"
+        },
+        "activityName" : {
+          "type" : "string",
+          "example" : "todo"
+        },
+        "message" : {
+          "$ref" : "#/definitions/MessageInEnum"
+        },
+        "dataList" : {
+          "$ref" : "#/definitions/MessageDataList"
+        }
+      },
+      "example" : {
+        "activityGuid" : "todo",
+        "dataList" : "",
+        "activityName" : "todo",
+        "message" : "COMPLETED"
+      }
+    },
+    "MessageInEnum" : {
+      "type" : "string",
+      "example" : "COMPLETED",
+      "enum" : [ "ABORTED", "COMPLETED", "FAULTED", "STARTED" ]
+    },
+    "MessageDataList" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/Data"
+      }
+    },
+    "Data" : {
+      "type" : "object",
+      "required" : [ "name" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "example" : "todo"
+        }
+      }
+    }
+  }
+}
