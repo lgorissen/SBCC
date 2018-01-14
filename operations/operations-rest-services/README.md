@@ -1,7 +1,11 @@
+
 #Build and Run
+
 The commands below are intended to be run on a Linux machine.
 
-**Build**
+
+##Build
+
 Requires Maven 3 and JDK8
 > mvn clean package
 
@@ -13,14 +17,17 @@ Builds 3 artifacts:
 Artifacts 2 and 3 are similar: either one can be used when deploying to the Oracle ACCS.
 
 
-**Run the SpringBoot jar file:**
+##Run the SpringBoot jar file
+
 Run the SpringBoot jar file:
 > java -jar target/operations-rest-services-1.0.0.jar
 
-**Running on Oracle Application Container Cloud Service (ACCS)**
+##Running on Oracle Application Container Cloud Service (ACCS)
+
 ToDo
 
-**Build a Container**
+##Build a Container
+
 Requires at least the Docker community edition to be installed.
 >mvn install dockerfile:build
 
@@ -31,7 +38,7 @@ That lists the containers available and the operations container should show up 
 > REPOSITORY                     TAG     IMAGE ID      CREATED         SIZE
 > sbcc/operations-rest-services  latest  35f31744fba8  35 seconds ago  116MB
 
-**Run a Container**
+##Run a Container
 Running the Docker container on a local machine:
 > docker run -d -p 8080:8080 sbcc/operations-rest-services
 
