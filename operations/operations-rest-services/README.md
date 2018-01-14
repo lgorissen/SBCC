@@ -1,5 +1,4 @@
-#Build & Run
-
+#Build and Run
 The commands below are intended to be run on a Linux machine.
 
 **Build**
@@ -31,7 +30,6 @@ Verify that the container is present:
 That lists the containers available and the operations container should show up like:
 > REPOSITORY                     TAG     IMAGE ID      CREATED         SIZE
 > sbcc/operations-rest-services  latest  35f31744fba8  35 seconds ago  116MB
-
 
 **Run a Container**
 Running the Docker container on a local machine:
