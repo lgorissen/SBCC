@@ -1,15 +1,17 @@
 package com.sbcc.businessrules.model;
 
+import com.sbcc.businessrules.model.types.MilestoneActionEnum;
+
 import javax.validation.constraints.NotNull;
 
 public class MilestoneAction {
     private String milestoneName;
-    private String action;
+    private MilestoneActionEnum action;
 
     public MilestoneAction() {
     }
 
-    public MilestoneAction(String milestoneName, String action) {
+    public MilestoneAction(String milestoneName, MilestoneActionEnum action) {
         this.milestoneName = milestoneName;
         this.action = action;
     }
@@ -23,12 +25,11 @@ public class MilestoneAction {
         this.milestoneName = milestoneName;
     }
 
-    @NotNull
-    public String getAction() {
+    public MilestoneActionEnum getAction() {
         return action;
     }
 
-    public void setAction(String action) {
+    public void setAction(MilestoneActionEnum action) {
         this.action = action;
     }
 

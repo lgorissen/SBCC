@@ -1,12 +1,14 @@
 package com.sbcc.businessrules.model;
 
+import com.sbcc.businessrules.model.types.CaseStateEnum;
+
 import javax.validation.constraints.NotNull;
 
 public class CaseHeader {
 
     private String name;
     private String version;
-    private String state;
+    private CaseStateEnum state;
     private String outcome;
     private String phase;
     private String category;
@@ -15,7 +17,7 @@ public class CaseHeader {
     public CaseHeader() {
     }
 
-    public CaseHeader(String name, String version, String state, String rulesVersion) {
+    public CaseHeader(String name, String version, CaseStateEnum state, String rulesVersion) {
         this.name = name;
         this.version = version;
         this.state = state;
@@ -40,12 +42,11 @@ public class CaseHeader {
         this.version = version;
     }
 
-    @NotNull
-    public String getState() {
+    public CaseStateEnum getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(CaseStateEnum state) {
         this.state = state;
     }
 

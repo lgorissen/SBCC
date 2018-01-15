@@ -1,16 +1,18 @@
 package com.sbcc.businessrules.model;
 
+import com.sbcc.businessrules.model.types.MilestoneEventEnum;
+
 import javax.validation.constraints.NotNull;
 
 public class MilestoneEvent {
 
     private String milestone;
-    private String milestoneEvent;
+    private MilestoneEventEnum milestoneEvent;
 
     public MilestoneEvent() {
     }
 
-    public MilestoneEvent(String milestone, String milestoneEvent) {
+    public MilestoneEvent(String milestone, MilestoneEventEnum milestoneEvent) {
         this.milestone = milestone;
         this.milestoneEvent = milestoneEvent;
     }
@@ -24,12 +26,11 @@ public class MilestoneEvent {
         this.milestone = milestone;
     }
 
-    @NotNull
-    public String getMilestoneEvent() {
+    public MilestoneEventEnum getMilestoneEvent() {
         return milestoneEvent;
     }
 
-    public void setMilestoneEvent(String milestoneEvent) {
+    public void setMilestoneEvent(MilestoneEventEnum milestoneEvent) {
         this.milestoneEvent = milestoneEvent;
     }
 

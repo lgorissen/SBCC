@@ -1,10 +1,10 @@
 package com.sbcc.businessrules.model;
 
-import javax.validation.constraints.NotNull;
+import com.sbcc.businessrules.model.types.CaseEventTypeEnum;
 
 public class CaseEvent {
 
-    private String eventType;
+    private CaseEventTypeEnum eventType;
     private ActivityEvent activityEvent;
     private CustomEvent customEvent;
     private LifecycleEvent lifecycleEvent;
@@ -13,7 +13,7 @@ public class CaseEvent {
     public CaseEvent() {
     }
 
-    public CaseEvent(String eventType, ActivityEvent activityEvent, CustomEvent customEvent, LifecycleEvent lifecycleEvent, MilestoneEvent milestoneEvent) {
+    public CaseEvent(CaseEventTypeEnum eventType, ActivityEvent activityEvent, CustomEvent customEvent, LifecycleEvent lifecycleEvent, MilestoneEvent milestoneEvent) {
         this.eventType = eventType;
         this.activityEvent = activityEvent;
         this.customEvent = customEvent;
@@ -21,12 +21,11 @@ public class CaseEvent {
         this.milestoneEvent = milestoneEvent;
     }
 
-    @NotNull
-    public String getEventType() {
+    public CaseEventTypeEnum getEventType() {
         return eventType;
     }
 
-    public void setEventType(String eventType) {
+    public void setEventType(CaseEventTypeEnum eventType) {
         this.eventType = eventType;
     }
 

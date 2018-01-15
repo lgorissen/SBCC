@@ -1,4 +1,4 @@
-package com.sbcc.businessrules.model.enums;
+package com.sbcc.businessrules.model.types;
 
 public enum ActivityEventEnum {
     ABORTED,

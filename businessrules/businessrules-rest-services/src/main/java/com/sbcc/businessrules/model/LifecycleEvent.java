@@ -1,17 +1,16 @@
 package com.sbcc.businessrules.model;
 
-import javax.validation.constraints.NotNull;
+import com.sbcc.businessrules.model.types.LifecycleEventEnum;
 
 public class LifecycleEvent {
 
-    private String lifecycleEvent;
+    private LifecycleEventEnum lifecycleEvent;
 
-    @NotNull
-    public String getLifecycleEvent() {
+    public LifecycleEventEnum getLifecycleEvent() {
         return lifecycleEvent;
     }
 
-    public void setLifecycleEvent(String lifecycleEvent) {
+    public void setLifecycleEvent(LifecycleEventEnum lifecycleEvent) {
         this.lifecycleEvent = lifecycleEvent;
     }
 

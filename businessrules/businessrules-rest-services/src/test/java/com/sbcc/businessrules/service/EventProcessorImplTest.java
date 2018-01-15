@@ -1,6 +1,10 @@
 package com.sbcc.businessrules.service;
 
 import com.sbcc.businessrules.model.*;
+import com.sbcc.businessrules.model.types.CaseEventTypeEnum;
+import com.sbcc.businessrules.model.types.CaseStateEnum;
+import com.sbcc.businessrules.model.types.MilestoneActionEnum;
+import com.sbcc.businessrules.model.types.MilestoneEventEnum;
 import com.sbcc.businessrules.rules.DecisionService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,20 +24,19 @@ import static org.mockito.BDDMockito.given;
 @SpringBootTest
 public class EventProcessorImplTest {
 
+    @Autowired
+    EventProcessor eventProcessorImpl;
     @MockBean
     private DecisionService decisionService;
-
-    @Autowired
-    EventProcessorImpl eventProcessorImpl;
 
     @Test
     public void processEventValidActivityEvent() {
 
-        Case caseInstance = new Case(new CaseHeader("HandelsvorderingCasus", "1.0", "ACTIVE", "DEFAULT"), Arrays.asList());
-        CaseEvent caseEvent = new CaseEvent("MILESTONE_EVENT", null, null, null, new MilestoneEvent("msProcesinleidingIngediend", "REACHED"));
+        Case caseInstance = new Case(new CaseHeader("HandelsvorderingCasus", "1.0", CaseStateEnum.ACTIVE, "DEFAULT"), Arrays.asList());
+        CaseEvent caseEvent = new CaseEvent(CaseEventTypeEnum.MILESTONE_EVENT, null, null, null, new MilestoneEvent("msProcesinleidingIngediend", MilestoneEventEnum.REACHED));
         List<CaseAction> caseActions = Arrays.asList();
 
-        List<CaseAction> caseActionsExpected = Arrays.asList(new CaseAction(null, new MilestoneAction("msProcesinleidingIngediend", "REACHED")));
+        List<CaseAction> caseActionsExpected = Arrays.asList(new CaseAction(null, new MilestoneAction("msProcesinleidingIngediend", MilestoneActionEnum.REACH)));
 
         given(this.decisionService.processEvent(caseInstance, caseEvent, caseActions)).willReturn(caseActionsExpected);
         List<CaseAction> caseActionsGot = eventProcessorImpl.processEvent(caseInstance, caseEvent, caseActions);

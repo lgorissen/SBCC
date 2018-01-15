@@ -1,6 +1,6 @@
 package com.sbcc.businessrules.model;
 
-import com.sbcc.businessrules.model.enums.ActivityEventEnum;
+import com.sbcc.businessrules.model.types.ActivityEventEnum;
 
 import javax.validation.constraints.NotNull;
 

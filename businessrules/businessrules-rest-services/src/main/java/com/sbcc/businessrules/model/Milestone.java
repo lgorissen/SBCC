@@ -1,12 +1,14 @@
 package com.sbcc.businessrules.model;
 
+import com.sbcc.businessrules.model.types.MilestoneStateEnum;
+
 import javax.validation.constraints.NotNull;
 import java.util.GregorianCalendar;
 
 public class Milestone {
 
     private String name;
-    private String state;
+    private MilestoneStateEnum state;
     private GregorianCalendar deadline;
 
     @NotNull
@@ -18,12 +20,11 @@ public class Milestone {
         this.name = name;
     }
 
-    @NotNull
-    public String getState() {
+    public MilestoneStateEnum getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(MilestoneStateEnum state) {
         this.state = state;
     }
 

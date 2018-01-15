@@ -1,17 +1,19 @@
 package com.sbcc.businessrules.model;
 
+import com.sbcc.businessrules.model.types.ActivityActionEnum;
+
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class ActivityAction {
     private String activityName;
-    private String action;
+    private ActivityActionEnum action;
     private List<ActionData> actionDataList;
 
     public ActivityAction() {
     }
 
-    public ActivityAction(String activityName, String action) {
+    public ActivityAction(String activityName, ActivityActionEnum action) {
         this.activityName = activityName;
         this.action = action;
     }
@@ -25,12 +27,11 @@ public class ActivityAction {
         this.activityName = activityName;
     }
 
-    @NotNull
-    public String getAction() {
+    public ActivityActionEnum getAction() {
         return action;
     }
 
-    public void setAction(String action) {
+    public void setAction(ActivityActionEnum action) {
         this.action = action;
     }
 
